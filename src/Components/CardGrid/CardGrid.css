@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap');
+
+:root {
+    --d: 700ms;
+    --e: cubic-bezier(0.19, 1, 0.22, 1);
+    --font-sans: 'Rubik', sans-serif;
+    --font-serif: 'Cardo', serif;
+}
+
+.page-content {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1024px;
+    margin: auto;
+    font-family: var(--font-sans);
+}
+
+@media (min-width: 600px) {
+    .page-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 800px) {
+    .page-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.cardd {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    height: 350px;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+        0 2px 2px rgba(0, 0, 0, 0.1),
+        0 4px 4px rgba(0, 0, 0, 0.1),
+        0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardd::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    transform: translateY(-50%);
+    transition: transform calc(var(--d) * 2) var(--e);
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+    transition: transform var(--d) var(--e);
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.copy {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-style: italic;
+}
+
+.btn {
+    cursor: pointer;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: black;
+    border: none;
+}
+
+@media (hover: hover) {
+    .content {
+        transform: translateY(calc(100% - 4.5rem));
+        transition: transform var(--d) var(--e);
+    }
+
+    .cardd:hover .content {
+        transform: translateY(0);
+    }
+
+    .cardd:hover::after {
+        transform: translateY(-50%);
+    }
+}
