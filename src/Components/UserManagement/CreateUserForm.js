@@ -15,7 +15,7 @@ export default function CreateUserForm() {
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5" style={{ height: '70vh' }}>
             <div className="row">
                 {/* Left Side - Create User Form */}
                 <div className="col-md-6">

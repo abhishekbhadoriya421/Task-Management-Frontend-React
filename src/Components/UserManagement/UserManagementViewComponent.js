@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-
+import { Link } from 'react-router-dom';
 const UserManagementView = () => {
     const userList = useSelector((state) => state.userManagement.coreUser);
 
@@ -11,7 +11,7 @@ const UserManagementView = () => {
                         <h4>User Management</h4>
                     </div>
                     <div className="col-md-6">
-                        <button className="btn btn-primary float-end">Add User</button>
+                        <Link to={'/user-management/create'} className="btn btn-primary float-end">Add User</Link>
                     </div>
                 </div>
             </div>
