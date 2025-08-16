@@ -14,7 +14,7 @@ const Home = () => {
             title: 'Task Management',
             content: "Manage Task Related Configuration",
             button: "Lunch",
-            to: "/taks-management/view"
+            to: "/task-management/view"
         },
         {
             imageUrl: "/chat-app-image.jpg",
