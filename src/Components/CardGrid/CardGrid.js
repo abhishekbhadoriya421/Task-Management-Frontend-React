@@ -14,7 +14,7 @@ export default function CardGrid({ imageUrl, children, title, content, button, t
                 <p className="card-text">
                     {content}
                 </p>
-                <Link className="btn" to={to}>{button}</Link>
+                <Link className="btnn" to={to}>{button}</Link>
             </div>
         </div>
     );

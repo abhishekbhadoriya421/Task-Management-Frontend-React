@@ -6,11 +6,18 @@ import Loader from '../Loader/Loader';
 
 const UserManagementView = () => {
     const { coreUser, loading } = useSelector((state) => state.userManagement);
-    console.log(coreUser)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchUsers());
     }, [dispatch])
+
+    const handleDeleteUser = (id) => {
+        console.log("Delete" + id)
+    }
+
+    const handleUpdateUser = (id) => {
+        console.log("Update" + id)
+    }
     return (
         <div className="card" >
             <div className="card-header">
@@ -19,7 +26,7 @@ const UserManagementView = () => {
                         <h4>User Management</h4>
                     </div>
                     <div className="col-md-6">
-                        <Link to={'/user-management/create'} className="btn btn-primary float-end">Add User</Link>
+                        <Link to={'/user-management/create'} className=" btnn btn btn-primary float-end">Add User</Link>
                     </div>
                 </div>
             </div>
@@ -29,7 +36,7 @@ const UserManagementView = () => {
                         <Loader />
                         :
                         <div className="col-md-12 table-responsive">
-                            <table className="table table-bordered table-striped">
+                            <table className="table table-bordered table-striped  text-center align-middle">
                                 <thead className="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -42,7 +49,7 @@ const UserManagementView = () => {
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                     {coreUser.map((user, index) => (
                                         <tr key={index}>
                                             <td>{index + 1}</td>
@@ -52,9 +59,13 @@ const UserManagementView = () => {
                                             <td>{user.mobile_number}</td>
                                             <td>{user.status}</td>
                                             <td>{new Date(user.created_at * 1000).toLocaleString()}</td>
-                                            <td>
-                                                <button>Update</button>
-                                                <button><i class="bi bi-trash3-fill"></i></button>
+                                            <td className="d-flex justify-content-center">
+                                                <button onClick={() => handleUpdateUser(user._id)} title="Update" className="btn btn-warning me-2 mt-1">
+                                                    <i className="bi bi-pencil-square"></i>
+                                                </button>
+                                                <button onClick={() => handleDeleteUser(user._id)} title="Delete" className="btn btn-danger mt-1">
+                                                    <i className="bi bi-trash3-fill"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}

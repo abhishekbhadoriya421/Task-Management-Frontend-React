@@ -53,36 +53,50 @@ export const addUser = createAsyncThunk(
     }
 )
 
+
+// Handlers for fetchUsers
+const fetchUsersPending = (state) => {
+    state.loading = true;
+    state.success_msg = null;
+    state.error_msg = null;
+};
+const fetchUsersFulfilled = (state, action) => {
+    state.loading = false;
+    state.coreUser = action.payload;
+};
+const fetchUsersRejected = (state, action) => {
+    state.loading = false;
+    toast.error(`❌ ${action.payload}`);
+};
+
+// Handlers for addUser
+const addUserPending = (state) => {
+    state.loading = true;
+    state.success_msg = null;
+    state.error_msg = null;
+};
+const addUserFulfilled = (state, action) => {
+    state.loading = false;
+    state.coreUser.push(action.payload);
+    toast.success(`User Created Successfully Username: ${action.payload.user_name}, Id ${action.payload._id}`);
+};
+const addUserRejected = (state, action) => {
+    state.loading = false;
+    toast.error(`❌ ${action.payload}`);
+};
+
+
 const UserManagementSlice = createSlice({
     name: 'user-management',
     initialState: initailState,
     extraReducers: (builder) => {
-        builder.addCase(fetchUsers.pending, (state) => {
-            state.loading = true;
-            state.success_msg = null;
-            state.error_msg = null;
-        })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
-                state.loading = false;
-                state.coreUser = action.payload;
-            })
-            .addCase(fetchUsers.rejected, (state, action) => {
-                state.loading = false;
-                toast.error(`❌ ${action.payload}`);
-            })
-            .addCase(addUser.pending, (state) => {
-                state.loading = true;
-                state.success_msg = null;
-                state.error_msg = null;
-            }).addCase(addUser.fulfilled, (state, action) => {
-                state.loading = false;
-                state.coreUser.push(action.payload);
-                toast.success(`User Created Successfully Username: ${action.payload.user_name}, Id ${action.payload._id}`)
-            })
-            .addCase(addUser.rejected, (state, action) => {
-                state.loading = false;
-                toast.error(`❌ ${action.payload}`);
-            })
+        builder
+            .addCase(fetchUsers.pending, fetchUsersPending)
+            .addCase(fetchUsers.fulfilled, fetchUsersFulfilled)
+            .addCase(fetchUsers.rejected, fetchUsersRejected)
+            .addCase(addUser.pending, addUserPending)
+            .addCase(addUser.fulfilled, addUserFulfilled)
+            .addCase(addUser.rejected, addUserRejected);
     }
 });
 
