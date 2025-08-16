@@ -34,10 +34,10 @@ function HeaderComponent() {
                             <HoverLink to="/" className="nav-link">Home</HoverLink>
                         </li>
                         <li className="nav-item">
-                            <HoverLink to="/Task" className="nav-link">Task</HoverLink>
+                            <HoverLink to="/task-management/view" className="nav-link">Task</HoverLink>
                         </li>
                         <li className="nav-item">
-                            <HoverLink to="/User" className="nav-link">User</HoverLink>
+                            <HoverLink to="/user-management/view" className="nav-link">User</HoverLink>
                         </li>
                         <li className="nav-item">
                             <HoverLink to="/About" className="nav-link">About</HoverLink>

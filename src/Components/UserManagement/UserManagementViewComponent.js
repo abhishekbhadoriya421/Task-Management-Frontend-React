@@ -6,6 +6,7 @@ import Loader from '../Loader/Loader';
 
 const UserManagementView = () => {
     const { coreUser, loading } = useSelector((state) => state.userManagement);
+    console.log(coreUser)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchUsers());
@@ -50,8 +51,11 @@ const UserManagementView = () => {
                                             <td>{user.employee_id}</td>
                                             <td>{user.mobile_number}</td>
                                             <td>{user.status}</td>
-                                            <td>Created At</td>
-                                            <td>Action</td>
+                                            <td>{new Date(user.created_at * 1000).toLocaleString()}</td>
+                                            <td>
+                                                <button>Update</button>
+                                                <button><i class="bi bi-trash3-fill"></i></button>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>

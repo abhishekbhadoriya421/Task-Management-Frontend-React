@@ -1,11 +1,10 @@
-function Loader() {
+import "./Loader.css";
+
+export default function Loader() {
     return (
-        <div className="d-flex justify-content-center align-items-center" style={{ height: "200px" }}>
-            <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div>
+        <div className="loader-container">
+            <div className="loader"></div>
+            <h3>Loading, please wait...</h3>
         </div>
     );
 }
-
-export default Loader;
