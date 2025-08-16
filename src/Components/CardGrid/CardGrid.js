@@ -7,6 +7,7 @@ export default function CardGrid({ imageUrl, children, title, content, button, t
                 src={imageUrl}
                 className="card-img-top"
                 alt="Card Example"
+                style={{ width: '100%', height: '200px' }}
             />
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>

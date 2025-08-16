@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function HeaderComponent() {
     return (
         <nav className="navbar navbar-expand-lg mb-3 rounded-b-lg shadow-md"
-            style={{ backgroundColor: "#f2f1f1ff" }}>
+            style={{ backgroundColor: "#f2f1f1ff", position: 'sticky', top: '0px', zIndex: '1' }}>
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand text-3xl font-bold text-gray-800">
                     <h4>

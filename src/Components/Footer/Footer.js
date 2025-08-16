@@ -1,6 +1,6 @@
 const Footer = () => {
     const styleLink = {
-        position: "fixed",
+        position: "sticky",
         bottom: "0px",
         width: '100%'
     }
