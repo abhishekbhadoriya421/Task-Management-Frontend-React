@@ -48,7 +48,7 @@ export const addUser = createAsyncThunk(
                 return responseData.model
             }
         } catch (error) {
-
+            return rejectWithValue(error.message);
         }
     }
 )
